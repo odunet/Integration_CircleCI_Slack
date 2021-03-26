@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run:
           name: "echo environment variables from org-global context"
-          command: echo SLACK_ACCESS_TOKEN
+          command: echo ${SLACK_ACCESS_TOKEN}
       - run:
           name: Install dependencies
           command: npm install
@@ -35,4 +35,5 @@ jobs:
 workflows:
   build-and-notify:
     jobs:
-      - build-test-and-notify
+      - build-test-and-notify:
+          context: slackIntergration
