@@ -35,6 +35,6 @@ jobs:
 workflows:
   build-and-notify:
     jobs:
-      - build-test-and-notify
-      context:
-        - slackIntergration
+      - build-test-and-notify:
+                      context:
+                        - slackIntergration
