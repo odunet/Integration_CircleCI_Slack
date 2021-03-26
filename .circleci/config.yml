@@ -13,12 +13,22 @@ jobs:
           command: npm install
       - run: npm run test
       - slack/notify:
-          color: "#42e2f4"
-          mentions: "odunet"
-          message: A custom message to notify the channel about the latest build
-      - slack/status:
-          fail_only: true
-          mentions: "odunet"
+          custom: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "fields": [
+                    {
+                      "type": "plain_text",
+                      "text": "*This is a text notification*",
+                      "emoji": true
+                    }
+                  ]
+                }
+              ]
+            }
+          event: always
 workflows:
   build-and-notify:
     jobs:
