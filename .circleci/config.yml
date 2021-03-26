@@ -8,12 +8,12 @@ jobs:
       name: node/default
     steps:
       - checkout
+      - run:  command: echo $SLACK_ACCESS_TOKEN
+      - run:  command: echo SLACK_ACCESS_TOKEN
       - run:
           name: Install dependencies
           command: npm install
       - run: npm run test
-      - run:  command: echo $SLACK_ACCESS_TOKEN
-      - run:  command: echo SLACK_ACCESS_TOKEN
       - slack/notify:
           custom: |
             {
