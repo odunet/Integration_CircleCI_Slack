@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run:
           name: "echo environment variables from org-global context"
-          command: echo $SLACK_ACCESS_TOKEN
+          command: echo SLACK_ACCESS_TOKEN
       - run:
           name: Install dependencies
           command: npm install
