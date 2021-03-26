@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   node: circleci/node@3.0.0
   slack: circleci/slack@4.1
-  twilio: circleci/twilio@0.0.1
+  twilio: circleci/twilio@1.0.0
 jobs:
   build-test-and-notify:
     executor:
@@ -33,10 +33,11 @@ jobs:
               ]
             }
           event: always
+      - twilio/install
       - twilio/sendsms:
-          body: Send SMS to twilio
-      - twilio/alert:
-          body: Send SMS for error
+          body: This is a custom message notification
+          from: '${TWILIO_FROM}'
+          to: ''${TWILIO_TO}'
 workflows:
   build-and-notify:
     jobs:
