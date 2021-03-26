@@ -2,6 +2,7 @@ version: 2.1
 orbs:
   node: circleci/node@3.0.0
   slack: circleci/slack@4.1
+  twilio: circleci/twilio@0.0.1
 jobs:
   build-test-and-notify:
     executor:
@@ -32,6 +33,10 @@ jobs:
               ]
             }
           event: always
+      - twilio/sendsms:
+          body: Send SMS to twilio
+      - twilio/alert:
+          body: Send SMS for error
 workflows:
   build-and-notify:
     jobs:
