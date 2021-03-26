@@ -37,7 +37,7 @@ jobs:
       - twilio/sendsms:
           body: This is a custom message notification
           from: '${TWILIO_FROM}'
-          to: ''${TWILIO_TO}'
+          to: '${TWILIO_TO}'
 workflows:
   build-and-notify:
     jobs:
