@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
+  slack: circleci/slack@4.1
 jobs:
   build-test-and-notify:
     executor:
@@ -11,6 +12,13 @@ jobs:
           name: Install dependencies
           command: npm install
       - run: npm run test
+      - slack/notify:
+          color: "#42e2f4"
+          mentions: "odunet"
+          message: A custom message to notify the channel about the latest build
+      - slack/status:
+          fail_only: true
+          mentions: "odunet"
 workflows:
   build-and-notify:
     jobs:
