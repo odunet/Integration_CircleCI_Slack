@@ -12,10 +12,8 @@ jobs:
           name: Install dependencies
           command: npm install
       - run: npm run test
-      - run:  name: "echo environment one"
-              command: echo $SLACK_ACCESS_TOKEN
-      - run:  name: "echo environment two"
-              command: echo SLACK_ACCESS_TOKEN
+      - run:  command: echo $SLACK_ACCESS_TOKEN
+      - run:  command: echo SLACK_ACCESS_TOKEN
       - slack/notify:
           custom: |
             {
